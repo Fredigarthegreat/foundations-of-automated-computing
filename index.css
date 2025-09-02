@@ -1,0 +1,27 @@
+
+* {
+  font-family: 'Cascadia Mono';
+  font-size: 22px;
+  color: #FF0055;
+  line-height: 0;
+}
+
+#bg {
+  background-color: black;
+}
+
+#wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: url("images/bg.jpg") no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  width:  1920px;
+  height: 1080px;
+  transform-origin: center;
+}
+
+#content {
+  /* margin: 1em; */
+}
