@@ -1,9 +1,33 @@
+:root {
+  --article-left: 20ch;
+  --em-err: 1.15;
+  /*
+  --article_top
+  */
+  --pink:  #FF0055;
+  --cyan:  #00FFD4;
+  --green: #00FF7F;
+  --nav-width: 10ch;
+  --nav-domain: calc(25em * 1.15);
+}
 
 * {
   font-family: 'Cascadia Mono';
-  font-size: 22px;
-  color: #FF0055;
-  line-height: 0;
+  font-size: 32px;
+  color: var(--pink);
+  line-height: 1.15;
+}
+
+:focus {
+  outline: solid white;
+  background: var(--pink);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 #bg {
@@ -21,7 +45,87 @@
   height: 1080px;
   transform-origin: center;
 }
-
 #content {
-  /* margin: 1em; */
+  margin-top: 1em;
+  margin-left: 1ch;
+}
+
+article {
+  position: absolute;
+  top: 3em;
+  left: var(--article-left);
+  white-space: pre;
+}
+
+#nav {
+  position: absolute;
+  height: var(--nav-domain);
+  top: 3em;
+}
+
+#nav ol {
+  padding-left: 1ch;
+  margin: 0;
+}
+
+#nav li {
+  list-style: none;
+  padding-bottom: 0;
+}
+#nav li:hover {
+  background: var(--pink);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+#nav li.selected {
+  background: var(--pink);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+#nav li.full-margin {
+  list-style: none;
+  padding-bottom: 1.15em;
+}
+
+#nav-bottom {
+  position: absolute;
+  top: var(--nav-domain);
+}
+
+#nav-bottom-buttons {
+  position: absolute;
+  top: 0;
+  left: 6ch;
+  margin: 0;
+  padding: 0;
+}
+
+#nav-bottom-buttons button {
+  width: 3ch;
+  height: 1em;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#nav-bottom-buttons button:hover{
+  background: var(--pink);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+#nav-bottom-buttons button:focus {
+  background: var(--pink);
+}
+
+#nav-down {
+  position: relative;
+  left: -1ch;
+}
+
+#b-up {
+
 }
