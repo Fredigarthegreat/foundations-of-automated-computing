@@ -10,12 +10,21 @@
   --nav-width: 10ch;
   --nav-domain: calc(25em * 1.15);
 }
+html, body {
+  overflow: hidden;
+  margin: 0;
+}
 
 * {
   font-family: 'Cascadia Mono';
   font-size: 32px;
   color: var(--pink);
   line-height: 1.15;
+}
+
+.invert {
+  background: var(--pink);
+  color: black;
 }
 
 :focus {
@@ -57,10 +66,24 @@ article {
   white-space: pre;
 }
 
+#page-control {
+  position: relative;
+  top: -1.15em;
+  text-align: center;
+  left: 48ch;
+}
+
+#help-prompt {
+  position: relative;
+  top: calc(25 * 1.15em);
+  left: 94ch;
+}
+
+
 #nav {
   position: absolute;
-  height: var(--nav-domain);
   top: 3em;
+  height: var(--nav-domain);
 }
 
 #nav ol {

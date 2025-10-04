@@ -1,0 +1,88 @@
+Hello! Thank you so much for visiting my website!
+
+I am so fired up to help you get started on your journey towards computer science
+mastery! It's a tricky field to get into, so I am very pleased you are trusting 
+my ability to help you find your way there. 
+
+This course is designed for complete beginners, but if you've already started
+programming, ESPECIALLY if you've found yourself discouraged or jaded after 
+your past incursions, this is definitely the right course for you. Even if 
+you are a seasoned amateur, I 100% guarantee that you will come away with a 
+new perspective, and you will likely learn something you didn't know before!
+
+If you're eager to get going, you can feel free to skip to the next chapter. 
+Or don't! Up to you...
+
+(Press the right arrow-key or l to go to the next page)
+
+---------------------------------------------------------------------------------
+Computers are an integral part of our everyday lives at the time of writing (the 
+year 2025). Everyone loves the improved quality of life that they offer. But most 
+people, even programmers, view computers as hopelessly complicated and aren't 
+encouraged to learn much about how they really work. So why should you as someone 
+interested in computer programming pay attention to how computers really work at
+a deep level?
+
+1. Computers are dope.
+
+This is my favorite reason! It is so wild to me that we have figured out how to 
+outsource our brain-work to components made from raw materials. I don't know 
+about you, but I get a unique exhilaration from gaining the ability to wrap my 
+mind around a complicated system that has the potential to be really useful. It's 
+especially rewarding when you find hidden tricks and thinking tools to understand 
+parts of it that other people have missed! I have a deep love for digital 
+computing that goes beyond providing value to computer users and I'm so excited 
+to share it with you! I already know that we're going to have a blast together!
+
+---------------------------------------------------------------------------------
+2. Bolster your employment chances.
+
+If you need income right away it might be wise to fast track your entry into the 
+industry by skipping right to web programming. But the dependability of this 
+choice is fading away quickly. It is getting harder and harder even for computer 
+science graduates to find employment, let alone junior developers fresh out of 
+web-dev boot camp. At the time of writing, the industry is in a widespread hiring 
+slump. You'll need to set yourself apart if you want a chance at getting hired. 
+
+3. Initiate a pattern for motivated growth.
+
+Does it seem impossible that a journey in computer science could exceed the 
+appeal of videogames or doom-scrolling? Somehow I've managed to achieve this 
+myself in spite of being a long-time pc gamer (nothing against videogames, by the 
+way, I love them!). At a minimum, you've probably spent the last 12 years of your 
+life learning stuff that you didn't find very important. I'm going to help you 
+plant your feet firmly on the ground so you won't have to feel like you're 
+floating along anymore. For the first time (maybe), we are going to unlock your 
+internal motivation to grow in personal competence. Keep reading!
+---------------------------------------------------------------------------------
+
+Who is this course for?
+
+Really anyone who thinks computers are cool and that they might want to do more 
+with them, maybe even start a career around them. Like I said before, I've made 
+this course for the average person. I do assume at certain points that you have 
+basic knowledge of how to use a computer. If you find yourself stuck, don't 
+hesitate to ask ChatGPT or a similar LLM for help. 
+
+I take a different point of view from mainstream computer programming education. 
+It's worth it to spend more time on the front end laying the foundation that you 
+will continue to build on for the rest of your career. Worried that computer 
+science might not be for you? Don't worry, you'll find out pretty quickly if 
+computer science is something that you want to progress further in.  Don't be 
+fooled though! There is a cost to laying a solid foundation. The cost is time. 
+It's worth it, but there is a cost. If you're life is unstable at the moment, you 
+have an uphill battle in front of you! Try to nail down an income source and get 
+to a point where you can "turtle-up" and give yourself the solid start in 
+computer science that you need.
+
+---------------------------------------------------------------------------------
+If you're a highschooler or college-age student in a stable living situation, 
+fantastic! Take full advantage of the opportunity your parents gave you and use 
+your free time to build the most robust foundation that you can. And here, get 
+this: I'm going to help you unlock the fun in computer science. We're going to 
+have a blast!
+
+If you would, please fill out this survey. I want to know more about the people 
+who are checking out my educational material.
+
+And with that, let's get cooking!
