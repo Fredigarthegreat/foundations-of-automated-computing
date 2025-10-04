@@ -22,9 +22,27 @@ html, body {
   line-height: 1.15;
 }
 
+.image {
+  position: absolute;
+  top: .5em;
+  left: .5em;
+}
+
 .invert {
   background: var(--pink);
   color: black;
+}
+
+.cyan {
+  color: var(--cyan);
+}
+
+.green {
+  color: var(--green);
+}
+
+.inline {
+  display: inline-block;
 }
 
 :focus {

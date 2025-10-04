@@ -116,8 +116,8 @@ const Nav = {
   selectedChapter: 0,
   selectedPage: 0,
   chapters: [
-    { title: "01 Introduction", tHeight: 1, id : 0},
-    { title: "chapter 2 \n line 2", tHeight: 2 },
+    { title: "01 Introduction", tHeight: 1, id: 0},
+    { title: "02 What is data\n Processing?", tHeight: 2, id: 1},
     { title: "chapter 3", tHeight: 1 },
     { title: "chapter 4", tHeight: 1 },
     { title: "chapter 5", tHeight: 1 },
@@ -140,6 +140,7 @@ const courseMaterial = {
   "help": [
 `            HELP
 
+       F11: toggle fullscreen
          h: previous page
          l: next page
     j or n: next chapter
@@ -230,6 +231,103 @@ If you would, please fill out this survey. I want to know more about the people
 who are checking out my educational material.
 
 And with that, let's get cooking!`,
+  ],
+  1: [
+`Computers are all around us, but they are pretty complicated, aren't they? Hey, 
+welcome to my course. I've called it "foundations of automated computing" because 
+the key to understanding the computers we have today is taking a good look at 
+where they came from. This is going to be a very hands-on approach to computer 
+science. I hope you have fun going through it with me! 
+
+As you could probably guess, I do in fact have a computer right here in front of 
+me. We're going to crack it open and see what's inside, but first I want to 
+answer the question of "why?"
+
+Aristotle would agree with me that understanding the purpose of computers is a 
+critical first step to understand their function. So why do we have computers?
+
+Here's a tip: what was life like before we had computers?
+
+Well, we sure had to do a whole lot more work by hand! 
+
+Notice I used the word "work". Now that's an awfully funny thing to say. Right, 
+the last time you looked at your computer, I'm sure you didn't see any arms or 
+legs popping out of it (yes, you can hold your comments about robots. Thank you).
+`,
+`I haven't known computers to lay bricks, cook and clean, or do laundry for 
+example.
+
+Alright, so the work that computers can do is called <span class="cyan">"DATA PROCESSING"<span>. And that 
+is actually the only kind of work they can do. 
+
+Now that's not a very widely used term: <span class="cyan">"DATA PROCESSING"<span>. So what is it?
+
+I think the best way to explain is to go back in time a ways and tell you a 
+story. It's about arguably the first impactful use of electronic computing 
+machines ever!`,
+`Setting the scene:
+
+The year was 1890. The US population was positively booming, and we had a big 
+problem on our hands. See, the constitution says we have to do a census once 
+every ten years. Now the last census we just did took a whole eight years to 
+complete. We just finished it barely two years ago! Not only that, we had even 
+more information to collect this time. Experts predicted that we would still be 
+awaiting the results by the time we needed to start the census for the year 1900. 
+I'm sure you can agree that is just no good. 
+
+We really needed a creative solution to this problem! So we got the best brains 
+together and found an answer. We were going to use a computing machine.
+
+(Disclaimer: the details of this part of the story are severely simplified so we 
+can focus on the important bits. Follow <a class="inline green" target="_blank" href="https://en.wikipedia.org/wiki/Tabulating_machine" >this link</a> for the whole story)`,
+`Alright so picture this: you've got a card. 
+
+┌──────────────────────┐
+│○ male ○ female       │
+│○ married ○ single    │
+│Farmer? ○ Yes ○ No    │
+│Age:                  │
+│○ 0-17, ○ 18-39, ○ 40+│
+└──────────────────────┘
+
+As you can see, there's a whole bunch of details on the card. Everything the 
+government might want to know about an average citizen. So here's what you do: 
+you punch a hole in the card. At every data-point that applies to you, you punch 
+a hole. Now you give one of those cards to every person in the US. Right, 
+probably have 'em come down to the town hall and fill out a card. And now, we've 
+sent all those cards back to Washington DC. Well I'm sure you'll agree that those 
+cards are in fact DATA. But is it useful? Can you really get a good picture of 
+the breakdown of the US population by sifting through cards in millions of boxes?
+
+...Probably not.
+`,
+`So what do we have to do? Well, that data is not useful in its current form. But 
+maybe if we were to process this data, we could turn it into something more 
+useful? We could use a process called tabulation to put down how many people fit 
+into each one of our categories. 
+
+And that's exactly what we did. We used a machine named after the gentleman who 
+invented it: The Hollerith Tabulating Machine.`,
+`┌────────────────────────────────────────┐ So here's how the machine worked. 
+│                                        │ (A) You had a slot here. You put a 
+│                                        │ card in and then when you pulled down 
+│                                        │ the lever, a whole bunch of needles 
+│                                        │ came down onto the card. Now here's 
+│                                        │ the cool part: if a needle found a 
+│                                        │ hole, it would go through and dip 
+│                                        │ into a pool of mercury to create an 
+│                                        │ electronic circuit! You had one 
+│                                        │ circuit for each data-point, and each 
+│                                        │ circuit was connected to a dial on the 
+│                                        │ front panel (B). So when you ran a 
+│                                        │ card, you would see a matching dial go 
+│                                        │ up in count for each selection you 
+│                                        │ made on the card.
+│                                        │
+│                                        │
+└────────────────────────────────────────┘
+
+<img class="image" src="images/tab-machine.png" width="50%"/>`,
   ]
 };
 
