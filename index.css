@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "CascadiaCodeNF";
+  src: url("assets/CascadiaCodeNF.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --article-left: 20ch;
   --em-err: 1.15;
@@ -16,7 +23,7 @@ html, body {
 }
 
 * {
-  font-family: 'Cascadia Mono';
+  font-family: "CascadiaCodeNF", monospace;
   font-size: 32px;
   color: var(--pink);
   line-height: 1.15;
