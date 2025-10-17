@@ -11,9 +11,10 @@
   /*
   --article_top
   */
-  --pink:  #FF0055;
-  --cyan:  #00FFD4;
-  --green: #00FF7F;
+  --main:      #C69961;
+  --highlight: #A07394;
+  --cyan:      #00FFFF;
+  --link:      #6CB772;
   --nav-width: 10ch;
   --nav-domain: calc(25em * 1.15);
 }
@@ -25,7 +26,7 @@ html, body {
 * {
   font-family: "CascadiaCodeNF", monospace;
   font-size: 32px;
-  color: var(--pink);
+  color: var(--main);
   line-height: 1.15;
 }
 
@@ -36,7 +37,7 @@ html, body {
 }
 
 .invert {
-  background: var(--pink);
+  background: var(--main);
   color: black;
 }
 
@@ -48,12 +49,16 @@ html, body {
   color: rgb(200, 200, 200);
 }
 
+.highlight {
+  color: var(--highlight);
+}
+
 .cyan {
   color: var(--cyan);
 }
 
-.green {
-  color: var(--green);
+.link {
+  color: var(--link);
 }
 
 .inline {
@@ -62,7 +67,7 @@ html, body {
 
 :focus {
   outline: solid white;
-  background: var(--pink);
+  background: var(--main);
   color: black;
   border: none;
   cursor: pointer;
@@ -132,13 +137,13 @@ article {
   padding-bottom: 0;
 }
 #nav li:hover {
-  background: var(--pink);
+  background: var(--main);
   color: black;
   border: none;
   cursor: pointer;
 }
 #nav li.selected {
-  background: var(--pink);
+  background: var(--main);
   color: black;
   border: none;
   cursor: pointer;
@@ -171,13 +176,13 @@ article {
   cursor: pointer;
 }
 #nav-bottom-buttons button:hover{
-  background: var(--pink);
+  background: var(--main);
   color: black;
   border: none;
   cursor: pointer;
 }
 #nav-bottom-buttons button:focus {
-  background: var(--pink);
+  background: var(--main);
 }
 
 #nav-down {

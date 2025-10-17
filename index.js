@@ -357,10 +357,10 @@ legs popping out of it (yes, you can hold your comments about robots. Thank you)
 `I haven't known computers to lay bricks, cook and clean, or do laundry for 
 example.
 
-Alright, so the work that computers can do is called <span class="cyan">"DATA PROCESSING"</span>. And that 
+Alright, so the work that computers can do is called <span class="highlight">"DATA PROCESSING"</span>. And that 
 is actually the only kind of work they can do. 
 
-Now that's not a very widely used term: <span class="cyan">"DATA PROCESSING"</span>. So what is it?
+Now that's not a very widely used term: <span class="highlight">"DATA PROCESSING"</span>. So what is it?
 
 I think the best way to explain is to go back in time a ways and tell you a 
 story. It's about arguably the first impactful use of electronic computing 
@@ -477,12 +477,12 @@ you do on yours. Hopefully you have a windows computer! If you use a Mac, you ca
 still follow along, you may just have to look up a couple things on your own 
 (ChatGPT will come in handy for that!) sorry about that! We're using windows 
 because guess what? Most people use windows.`,
-`Ok, next let me introduce you to my old friend, <span class="cyan">[alt]-[tab]</span>. It's gonna be a 
-life-saver for you. Hold down <span class="cyan">[alt]</span> with your thumb and tap <span class="cyan">[tab]</span> with your 
-pinky. Now when you release <span class="cyan">[alt]</span> it will take you to whatever window you have 
-highlighted. (you can press <span class="cyan">[tab]</span> multiple times to cycle through the different 
+`Ok, next let me introduce you to my old friend, <span class="highlight">[alt]-[tab]</span>. It's gonna be a 
+life-saver for you. Hold down <span class="highlight">[alt]</span> with your thumb and tap <span class="highlight">[tab]</span> with your 
+pinky. Now when you release <span class="highlight">[alt]</span> it will take you to whatever window you have 
+highlighted. (you can press <span class="highlight">[tab]</span> multiple times to cycle through the different 
 windows)
-Do it with me now: <span class="cyan">[alt]-[tab]</span>, <span class="cyan">[alt]-[tab]</span>. Perfect!
+Do it with me now: <span class="highlight">[alt]-[tab]</span>, <span class="highlight">[alt]-[tab]</span>. Perfect!
     
 (I designed this website to work well in full-screen. Press F11)
     
@@ -528,7 +528,7 @@ probably just hiding.
 
 
 
-Search "show file extensions" on the windows search bar and press <span class="cyan">[enter]<span>. 
+Search "show file extensions" on the windows search bar and press <span class="highlight">[enter]<span>. 
 
 <img class="image" src="images/02-show-file-extensions.jpg" width="40%"/>`,
 `
@@ -574,7 +574,7 @@ Disable "Hide extensions for known file types".
 
 <img class="image" src="images/02-hide-extensions.jpg" width="50%"/>`,
 `Ok, now you'll see "-.jpg" or "-.png" or something similar at the end of your 
-file at home. If you were unaware, this part of the filename is called the <span class="cyan">FILE 
+file at home. If you were unaware, this part of the filename is called the <span class="highlight">FILE 
 EXTENSION</span>. It's meant to give your computer's system an idea of how this file was 
 intended to be processed when it was given to you. `,
 `
@@ -654,7 +654,7 @@ image file.
 `Ok, remember when I said earlier that computers are all just zeroes and ones? 
 It's true. Now I can already hear you: "that doesn't look like zeroes and ones to 
 me!". Well, you're kind of right. What you're looking at here is called 
-<span class="cyan">HEXIDECIMAL NOTATION</span>. It's a way of notating zeroes and ones.
+<span class="highlight">HEXIDECIMAL NOTATION</span>. It's a way of notating zeroes and ones.
 
 Still confused? No worries! Everything will be made clear. And to help us on our 
 way, I have another story for you!`,
@@ -669,15 +669,15 @@ church and see whether there was one light or two lights. That was all he needed
 to know where the British were coming from.
 
 Now think about that... you can communicate very critical information with 
-someone just with two observable devices (lanterns in this case) being <span class="cyan">on or off<span>. 
+someone just with two observable devices (lanterns in this case) being <span class="highlight">on or off<span>. 
 Pretty neat, right?`,
 `Here's another example: did you ever watch Return of the King? At one point, 
 Pippin has to go up and light the beacon. The light from the beacon would go from 
 Minas Terith all the way over to Rohan to communicate a very important message: 
 If the beacon is off, that means "Hey, you know, we're chilling", but as soon as 
 that beacon is lit that means, "Uh oh! Something's going down! We're in 
-trouble!". That proves you can communicate with someone and indicate <span class="cyan">one of two 
-different situations</span> with even just one thing being <span class="cyan">on or off</span>.
+trouble!". That proves you can communicate with someone and indicate <span class="highlight">one of two 
+different situations</span> with even just one thing being <span class="highlight">on or off</span>.
 
 Now think about Paul Revere's case. How come he needed two lights? Pippin was 
 able to indicate one of two different situations with one light. If Robert and 
@@ -693,10 +693,10 @@ those situations since there were more than two.
 Quick note: There is a key component to being able to communicate with lights. 
 You need a shared understanding between the person turning the lights on and off 
 and the person who is looking at the lights. Of course, everyone refers to this 
-kind of shared understanding as a <span class="cyan">code!</span> If someone was going for an evening 
+kind of shared understanding as a <span class="highlight">code!</span> If someone was going for an evening 
 stroll near Boston and they saw some lights up in the steeple of the Old North 
 Church, they would probably think "huh, I wonder what those lights are there 
-for?", but that would be about it. Only the ones who knew the <span class="cyan">code</span> could make 
+for?", but that would be about it. Only the ones who knew the <span class="highlight">code</span> could make 
 sense of those lights.`,
 `Now if you know what you're doing, you can actually indicate more than three 
 possible situations with two lights (This may not have worked in Paul Revere's 
@@ -710,45 +710,45 @@ suppose, but bear with me)? Obviously two, one with the light off, and the other
 with it on.
 <span class="white">
                    Light 1 
-    Combination 1: ○ <span class="gray">(off)</span>
-    Combination 2: <span class="cyan">●</span> <span class="gray">(on)</span>
+    Combination 1: <span class="gray">○ (off)</span>
+    Combination 2: ● <span class="gray">(on)</span>
 </span>`,
 `So if you have two lights, you have all the combinations of the first one 
 with the second one off (study these figures carefully. The first light is on 
 the left of the second light):
 <span class="white">
                    L2 L1 
-    Combination 1: ○  ○ <span class="gray">(off, off)</span>
-    Combination 2: ○  <span class="cyan">●</span> <span class="gray">(off, on)</span>
+    Combination 1: <span class="gray">○  ○ (off, off)</span>
+    Combination 2: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
  </span>   
 And all the combinations of the first light with the second one on:
 <span class="white">
                    L2 L1 
-    Combination 3: <span class="cyan">●</span>  ○ <span class="gray">(on, off)</span>
-    Combination 4: <span class="cyan">●  ●</span> <span class="gray">(on, on)</span>
+    Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
+    Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
  </span>   
 Here they are all together:
 <span class="white">
                    L2 L1 
-    Combination 1: ○  ○ <span class="gray">(off, off)</span>
-    Combination 2: ○  <span class="cyan">●</span> <span class="gray">(off, on)</span>
-    Combination 3: <span class="cyan">●</span>  ○ <span class="gray">(on, off)</span>
-    Combination 4: <span class="cyan">●  ●</span> <span class="gray">(on, on)</span>
+    Combination 1: <span class="gray">○  ○ (off, off)</span>
+    Combination 2: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
+    Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
+    Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
 </span>   
 Yep, those are all unique combinations! `,
 `Maybe you would want to communicate a cardinal direction with somebody:
 <span class="white">
            L2 L1 
     North: ○  ○                            
-    South: ○  <span class="cyan">●</span>
-    West:  <span class="cyan">●</span>  ○  
-    East:  <span class="cyan">●  ●</span>
+    South: ○  <span class="white">●</span>
+    West:  <span class="white">●</span>  ○  
+    East:  <span class="white">●  ●</span>
 </span>   
-Two lights would be enough for that! We would call a chart like this an <span class="cyan">ENCODING 
+Two lights would be enough for that! We would call a chart like this an <span class="highlight">ENCODING 
 STANDARD</span>. All that means is that we've decided ahead of time all the different 
 situations we want to indicate for a data-point and assigned a unique combination 
-of lights to each one. Right? We've come up with a <span class="cyan">STANDARD</span> that we can share 
-with anyone in the world that will allow them to correctly interpret or <span class="cyan">DECODE</span> 
+of lights to each one. Right? We've come up with a <span class="highlight">STANDARD</span> that we can share 
+with anyone in the world that will allow them to correctly interpret or <span class="highlight">DECODE</span> 
 our data.
 `,
 `
@@ -760,9 +760,9 @@ our data.
             ▼  ▼
    ┌─────────────┐
    │ North: ○  ○ │  
-   │ South: ○  <span class="cyan">●</span> │ <span class="gray">ENCODING STANDARD</span>
-   │ West:  <span class="cyan">●</span>  ○ │ 
-   │ East:  <span class="cyan">●  ●</span> │
+   │ South: ○  <span class="white">●</span> │ <span class="gray">ENCODING STANDARD</span>
+   │ West:  <span class="white">●</span>  ○ │ 
+   │ East:  <span class="white">●  ●</span> │
    └─────────────┘
             ▼  ▼
          ┌───────┐
