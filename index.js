@@ -249,9 +249,11 @@ const courseMaterial = {
             Press ESC to exit help.`
     ],
   0: [
-`Hello! Thank you so much for visiting my website!
+`Hello!
 
-I am so fired up to help you get started on your journey towards computer science
+Thank you so much for visiting my website!
+
+I am so excited to help you get started on your journey towards computer science
 mastery! It's a tricky field to get into, so I am very pleased you are trusting 
 my ability to help you find your way there. 
 
@@ -377,7 +379,7 @@ We really needed a creative solution to this problem! So we got the best brains
 together and found an answer. We were going to use a computing machine.
 
 (Disclaimer: the details of this part of the story are severely simplified so we 
-can focus on the important bits. Follow <a class="inline green" target="_blank" href="https://en.wikipedia.org/wiki/Tabulating_machine" >this link</a> for the whole story)`,
+can focus on the important bits. Follow <a class="inline link" target="_blank" href="https://en.wikipedia.org/wiki/Tabulating_machine" >this link</a> for the whole story)`,
 `Alright so picture this: you've got a card. 
 
 ┌──────────────────────┐
@@ -608,7 +610,7 @@ what it really looks like!
 
 
 
-<a class="inline green" target="_blank" href="https://mh-nexus.de/en/downloads.php?product=HxD20" >Download</a> and install HxD.
+<a class="inline link" target="_blank" href="https://mh-nexus.de/en/downloads.php?product=HxD20" >Download</a> and install HxD.
 
 <img class="image" src="images/02-download-hxd.jpg" width="200%"/>`,
 `
@@ -803,4 +805,4 @@ resize();
 
 navSelectPage(Nav, courseMaterial, 0);
 observer.observe(document.getElementById("article"), { childList: true });
-articleOveride(Nav, courseMaterial, "counter", 0);
+// articleOveride(Nav, courseMaterial, "counter", 0);
