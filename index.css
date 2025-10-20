@@ -15,6 +15,7 @@
   --highlight: #A07394;
   --cyan:      #00FFFF;
   --link:      #6CB772;
+  --white:     #C8C8C8;
   --nav-width: 10ch;
   --nav-domain: calc(25em * 1.15);
 }
@@ -36,6 +37,10 @@ html, body {
   left: .5em;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .invert {
   background: var(--main);
   color: black;
@@ -46,7 +51,7 @@ html, body {
 }
 
 .white {
-  color: rgb(200, 200, 200);
+  color: var(--white);
 }
 
 .highlight {
@@ -192,6 +197,15 @@ article {
 
 #b-up {
 
+}
+
+.enc-highlight {
+  background: var(--white);
+  color: black;
+}
+
+.enc-highlight span {
+  color: black;
 }
 
 .digit {

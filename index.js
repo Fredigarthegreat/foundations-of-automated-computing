@@ -1,4 +1,7 @@
 
+const LIGHT_OFF = '○';
+const LIGHT_ON = '●';
+
 const COLS = 81;
 const ROWS = 25;
 const SCROLL_AMT_TO_MOVE = 30;
@@ -62,7 +65,6 @@ function getActiveChapterLength (navState, material) {
 }
 
 function navSelectPage (navState, material, pageIndex) {
-  console.log(material[0].length);
   const chapterLength = getActiveChapterLength(navState, material);
   if (0 <= pageIndex && pageIndex <= chapterLength - 1) {
     navState.selectedPage = pageIndex;
@@ -135,7 +137,53 @@ function navSelectChapter (navState, material, chapterIndex) {
   }
 }
 
-function navInitializeUI (navState, material) {
+function handleBinaryLight (lightTarget) {
+  console.log("yo");
+  if (lightTarget.innerText == LIGHT_ON) {
+    lightTarget.innerText = LIGHT_OFF;
+  } else {
+    lightTarget.innerText = LIGHT_ON;
+  }
+
+  const binaryEl = lightTarget.parentNode;
+  var value = 0;
+  const length = binaryEl.children.length;
+
+  for (var i = 0; i <= length - 1; i++) {
+    const lightEl = binaryEl.children.item(i);
+    if (lightEl.innerText == LIGHT_ON) {
+      value += Math.pow(2, length - i - 1);
+    }
+  }
+  binaryEl.setAttribute("value", value);
+
+  const standardEl = document.getElementById("standard");
+  standardEl.querySelectorAll(".encoding").forEach(function (enc, i) {
+    if (i == value) {
+      enc.classList.add("enc-highlight");
+      standardEl.setAttribute("decoded", enc.getAttribute("data"));
+    } else {
+      enc.classList.remove("enc-highlight");
+    }
+  });
+
+  const decodedEl = document.getElementById("decoded-data");
+  console.log(decodedEl);
+  decodedEl.innerText = standardEl.getAttribute("decoded");
+}
+
+function handleChapterInterraction (navState) {
+  const article = document.getElementById("article");
+  article.addEventListener("click", function (e) {
+    switch (e.target.getAttribute("type")) {
+      case "light":
+        handleBinaryLight(e.target);
+        break;
+    }
+  })
+}
+
+function initializeUI (navState, material) {
   navState.list.addEventListener("click", function (e) {
     if (e.target.tagName === "LI") {
       navSelectChapter(navState, material, parseInt(e.target.getAttribute("index")));
@@ -161,6 +209,8 @@ function navInitializeUI (navState, material) {
       }
     });
   });
+
+  handleChapterInterraction(navState);
 
   document.onkeydown = function (e) {
     switch(e.code) {
@@ -245,6 +295,8 @@ const courseMaterial = {
          l: next page
     j or n: next chapter
     k or p: previous chapter
+
+  ctrl-tab: toggle to your music to skip adds and back
             
             Press ESC to exit help.`
     ],
@@ -263,10 +315,15 @@ your past incursions, this is definitely the right course for you. Even if
 you are a seasoned amateur, I 100% guarantee that you will come away with a 
 new perspective, and you will likely learn something you didn't know before!
 
-If you're eager to get going, you can feel free to skip to the next chapter. 
+If you're eager to get going, you can feel free to click on the next chapter. 
 Or don't! Up to you...
 
-(Press the right arrow-key or l to go to the next page. Press ? for help)`,
+(Press the right arrow-key or l to go to the next page. Press ? for help)
+
+
+
+
+<a class="link" href="https://music.youtube.com/playlist?list=PLSp_ENPwcJxgxUR75h1Y8GR-QDCAd2y1_&si=lgXHr-aw4YFRbsvX" target="_blank">♫ Cool music while you study ♫</a>`,
 `Computers are an integral part of our everyday lives at the time of writing (the 
 year 2025). Everyone loves the improved quality of life that they offer. But most 
 people, even programmers, view computers as hopelessly complicated and aren't 
@@ -711,39 +768,39 @@ How many combinations with just one light (not technically a combination, I
 suppose, but bear with me)? Obviously two, one with the light off, and the other 
 with it on.
 <span class="white">
-                   Light 1 
+                   Light 1 </span>
     Combination 1: <span class="gray">○ (off)</span>
-    Combination 2: ● <span class="gray">(on)</span>
-</span>`,
+    Combination 2: <span class="white">●</span> <span class="gray">(on)</span>
+`,
 `So if you have two lights, you have all the combinations of the first one 
 with the second one off (study these figures carefully. The first light is on 
 the left of the second light):
 <span class="white">
-                   L2 L1 
+                   L2 L1 </span>   
     Combination 1: <span class="gray">○  ○ (off, off)</span>
     Combination 2: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
- </span>   
+
 And all the combinations of the first light with the second one on:
 <span class="white">
-                   L2 L1 
+                   L2 L1 </span>   
     Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
     Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
- </span>   
+
 Here they are all together:
 <span class="white">
-                   L2 L1 
+                   L2 L1 </span>   
     Combination 1: <span class="gray">○  ○ (off, off)</span>
     Combination 2: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
     Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
     Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
-</span>   
+
 Yep, those are all unique combinations! `,
 `Maybe you would want to communicate a cardinal direction with somebody:
 <span class="white">
            L2 L1 
-    North: ○  ○                            
-    South: ○  <span class="white">●</span>
-    West:  <span class="white">●</span>  ○  
+    North: <span class="gray">○  ○</span>                            
+    South: <span class="gray">○</span>  <span class="white">●</span>
+    West:  <span class="white">●</span>  <span class="gray">○</span>  
     East:  <span class="white">●  ●</span>
 </span>   
 Two lights would be enough for that! We would call a chart like this an <span class="highlight">ENCODING 
@@ -753,27 +810,29 @@ of lights to each one. Right? We've come up with a <span class="highlight">STAND
 with anyone in the world that will allow them to correctly interpret or <span class="highlight">DECODE</span> 
 our data.
 `,
-`
+`This interactive demo models what someone's mental process might be if you handed 
+them an encoding standard and you asked them to translate (<span class="highlight">decode</span>) any given 
+group of two lights into data based on that standard.
 <span class="white">
-            L2 L1 
-          ┌──────┐
-          │ ○  ○ │ <span class="gray">ENCODED DATA</span>
-          └──────┘
-            ▼  ▼
-   ┌─────────────┐
-   │ North: ○  ○ │  
-   │ South: ○  <span class="white">●</span> │ <span class="gray">ENCODING STANDARD</span>
-   │ West:  <span class="white">●</span>  ○ │ 
-   │ East:  <span class="white">●  ●</span> │
-   └─────────────┘
-            ▼  ▼
-         ┌───────┐
-         │ North │ <span class="gray">DECODED DATA</span>
-         └───────┘
-
-
+                                 L2 L1 
+                               ┌──────┐
+<span>Click lights to toggle:</span>        │ <span id="binary" value="0"><span type="light" class="clickable white">○</span>  <span type="light" class="clickable white">○</span></span> │ <span class="gray">ENCODED DATA</span>
+                               └──────┘
+                                 ▼  ▼
+                    <span id="standard" decoded="North" class="white">    ┌─────────────┐
+<span>They would look at the </span> │<span class="encoding enc-highlight" data="North"> <span class="white">North:</span> <span class="gray">○  ○</span> </span>│  
+<span>chart to find which row</span> │<span class="encoding" data="South"> <span class="white">South: <span class="gray">○  </span>●</span> </span>│ <span class="gray">ENCODING STANDARD</span>
+<span>matches the current    </span> │<span class="encoding" data=" West"> <span class="white">West:  ●</span>  <span class="gray">○</span> </span>│ 
+<span>combination the lights </span> │<span class="encoding" data =" East"> <span class="white">East:  ●  ●</span> </span>│
+<span>are in...</span>               └─────────────┘</span>
+                                 ▼  ▼
+<span>...and conclude what the     </span> ┌───────┐
+<span>lights mean in that given --></span> │ <span id="decoded-data" class="white">North</span> │ <span class="gray">DECODED DATA</span>
+<span>case                         </span> └───────┘
 </span>   
+<script src="scripts/02-encoding.js"></script>
 `,
+
 ]
 };
 
@@ -797,12 +856,12 @@ const observer = new MutationObserver(function () {
   });
 })
 
-navInitializeUI(Nav, courseMaterial);
+initializeUI(Nav, courseMaterial);
 navPopulate(Nav);
 
 window.addEventListener('resize', resize);
 resize();
 
-navSelectPage(Nav, courseMaterial, 0);
+navSelectPage(Nav, courseMaterial, Nav.selectedPage);
 observer.observe(document.getElementById("article"), { childList: true });
 // articleOveride(Nav, courseMaterial, "counter", 0);
