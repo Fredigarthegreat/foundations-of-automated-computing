@@ -257,8 +257,8 @@ const Nav = {
   height: 24,
   scrollBuf: 0,
   top: 0,
-  selectedChapter: 0,
-  selectedPage: 0,
+  selectedChapter: 2,
+  selectedPage: 34,
   chapters: [
     { title: "01 Introduction", tHeight: 1, id: 0 },
     { title: "02 What is data\nProcessing?", tHeight: 2, id: 1 },
@@ -511,13 +511,13 @@ on your screen. When you start typing, each key-press is a little bit of data
 that your computer has to process into new letters and other characters that 
 appear on your document. When you're done, you move your mouse up to the file 
 button...You just moved your mouse! Your mouse is (perhaps) wired up to your 
-computer! You've got a Universal Serial Bus right there! There's data traveling 
-along that cord right into your computer. Each time you move your mouse a 
-miniscule amount, that's a little bit of data your computer has to process in 
-order for your mouse to move across the screen. When you click on the file 
-button, even that is more data sent to the computer. Click "save" and now your 
-computer will take the words you had up on the screen and store them back in the 
-hard drive for safe keeping.`,
+computer! That's a USB! You've got a Universal Serial Bus right there! There's 
+data traveling along that cord right into your computer. Each time you move your 
+mouse a miniscule amount, that's a little bit of data your computer has to 
+process in order for your mouse to move across the screen. When you click on the 
+file button, even that is more data sent to the computer. Click "save" and now 
+your computer will take the words you had up on the screen and store them back in 
+the hard drive for safe keeping.`,
 `So you can see that even though we do some pretty awesome things on our 
 computers nowadays, it's just data processing all the way down. 
 
@@ -768,32 +768,32 @@ How many combinations with just one light (not technically a combination, I
 suppose, but bear with me)? Obviously two, one with the light off, and the other 
 with it on.
 <span class="white">
-                   Light 1 </span>
+                   Light 1 
     Combination 1: <span class="gray">○ (off)</span>
     Combination 2: <span class="white">●</span> <span class="gray">(on)</span>
-`,
+</span>`,
 `So if you have two lights, you have all the combinations of the first one 
 with the second one off (study these figures carefully. The first light is on 
 the left of the second light):
 <span class="white">
-                   L2 L1 </span>   
+                   L2 L1
     Combination 1: <span class="gray">○  ○ (off, off)</span>
     Combination 2: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
-
+ </span>   
 And all the combinations of the first light with the second one on:
 <span class="white">
-                   L2 L1 </span>   
+                   L2 L1 
     Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
     Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
-
+</span>   
 Here they are all together:
 <span class="white">
-                   L2 L1 </span>   
+                   L2 L1 
     Combination 1: <span class="gray">○  ○ (off, off)</span>
     Combination 2: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
     Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
     Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
-
+</span>   
 Yep, those are all unique combinations! `,
 `Maybe you would want to communicate a cardinal direction with somebody:
 <span class="white">
@@ -830,9 +830,399 @@ group of two lights into data based on that standard.
 <span>lights mean in that given --></span> │ <span id="decoded-data" class="white">North</span> │ <span class="gray">DECODED DATA</span>
 <span>case                         </span> └───────┘
 </span>   
-<script src="scripts/02-encoding.js"></script>
 `,
+`There's also a very interesting thing happening here. Watch this:
+<span class="white">
+           Vertical/Horizontal   Negative/Positive
+    North: <span class="gray">○                  ○</span>                            
+    South: <span class="gray">○</span>                  <span class="white">●</span>
+    West:  <span class="white">●</span>                  <span class="gray">○</span>  
+    East:  <span class="white">●                  ●</span>
+</span>             
+The first light shows whether or not the direction is positive or negative (Like 
+it is in math) and the second light shows whether the direction is vertical or 
+horizontal. Almost like a code within the code. Wild, right?
+Cool stuff happening here. Now why limit ourselves to two lights? Let's see what 
+happens with a third.
+`,
+`How many combinations do we have available to us now with three lights? We're 
+going to do essentially what we did before. We'll start with all the combinations 
+of the first two with the third one off. 
+<span class="white">
+                   L3 L2 L1 
+    Combination 1: <span class="gray">○  ○  ○ (off, off, off)</span>
+    Combination 2: <span class="gray">○  ○</span>  <span class="white">●</span> <span class="gray">(off, off, on)</span>
+    Combination 3: <span class="gray">○</span>  <span class="white">●</span>  <span class="gray">○ (off, on, off)</span>
+    Combination 4: <span class="gray">○</span>  <span class="white">●  ●</span> <span class="gray">(off, on, on)</span>
+</span>
+Now we'll finish off with all the combinations of the first two again, this time 
+with the third one on. Check it:
+<span class="white">
+                   L3 L2 L1 
+    Combination 5: ●  <span class="gray">○  ○ (on, off, off)</span>
+    Combination 6: ●  <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(on, off, on)</span>
+    Combination 7: ●  ●  <span class="gray">○ (on, on, off)</span>
+    Combination 8: ●  ●  ● <span class="gray">(on, on, on)</span>
+</span>
+`,
+`Alright now let's put them together:
+<span class="white">
+                   L3 L2 L1 
+    Combination 1: <span class="gray">○  ○  ○ (off, off, off)</span>
+    Combination 2: <span class="gray">○  ○</span>  <span class="white">●</span> <span class="gray">(off, off, on)</span>
+    Combination 3: <span class="gray">○</span>  <span class="white">●</span>  <span class="gray">○ (off, on, off)</span>
+    Combination 4: <span class="gray">○</span>  <span class="white">●  ●</span> <span class="gray">(off, on, on)</span>
+    Combination 5: ●  <span class="gray">○  ○ (on, off, off)</span>
+    Combination 6: ●  <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(on, off, on)</span>
+    Combination 7: ●  ●  <span class="gray">○ (on, on, off)</span>
+    Combination 8: ●  ●  ● <span class="gray">(on, on, on)</span>
+</span>
+`,
+`So wow, we've doubled the number of situations we can differentiate between. In 
+fact, with every light that we add, the number of unique combinations we can map 
+a specific meaning onto doubles in size.
 
+Ok, now I can tell you're thinking, "alright, these lights are pretty cool and 
+all, right, we can make some cool codes. But I thought we were learning about 
+computers! What do lights have to do with computers?"
+`,
+`Well, computers don't in fact have lights on the inside of them. But what they do 
+have are specific positions that can store an electrical charge and the ability 
+to observe those positions. Your computer can tell if any given position has an 
+electrical charge or not and it can set any given position to be "on" or "off" as 
+it were. So functionally it's the same as communicating with lights! In fact, in 
+computer science we still use the descriptors "on" and "off" to identify whether 
+or not a position is electrically charged. That is how we can store and retrieve 
+data in a computer with electricity!
+
+In computer science, we refer to these electrical positions that can be on or off 
+as <span class="highlight">BITS.</span>
+`,
+`So just to recap: how can we prepare to store data in a computer? We just need to
+
+    1. determine the number of different situations our data could be in at any 
+    point in time.
+
+    2. Map each situation to a unique combination of <span class="highlight">bits</span>.
+`,
+`Quick note before we continue: have you ever seen a power switch labeled in this 
+way?
+<span class="white">
+   ┌───┐   
+   │ 1 │
+   │ 0 │
+   └───┘
+</span>    
+In electronics, we use 0 and 1 to correspond to off or on. So if you were a 
+computer engineer, you would have written that last chart with 3 lights as 
+follows:
+<span class="white">
+                   L3 L2 L1 
+    Combination 1: <span class="gray">0  0  0 (off, off, off)</span>
+    Combination 2: <span class="gray">0  0</span>  <span class="white">1</span> <span class="gray">(off, off, on)</span>
+    Combination 3: <span class="gray">0</span>  <span class="white">1</span>  <span class="gray">0 (off, on, off)</span>
+    Combination 4: <span class="gray">0</span>  <span class="white">1  1</span> <span class="gray">(off, on, on)</span>
+    Combination 5: 1  <span class="gray">0  0 (on, off, off)</span>
+    Combination 6: 1  <span class="gray">0</span>  <span class="white">1</span> <span class="gray">(on, off, on)</span>
+    Combination 7: 1  1  <span class="gray">0 (on, on, off)</span>
+    Combination 8: 1  1  1 <span class="gray">(on, on, on)</span>
+</span>
+So, here finally are the zeroes and ones that everyone loves to talk about!
+`,
+`Alrighty so we still haven't figured out these strange letters and numbers that 
+allegedly make up our image file; <span class="highlight">hexidecimal notation</span> as I called it before. But 
+we're getting closer!
+
+In order to understand the next step, we are actually going to create a simpler 
+file and start working with it instead of the jpg file. 
+`,
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+Right-click on your 
+desktop and select "new" -> "text document". 
+<img class="image" src="images/02-text-document.jpg" width="50%"/>`,
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Name it, and then double click on 
+it to open in notepad. I'm going to type this message into mine. 
+<img class="image" src="images/02-message.jpg" width="50%"/>`,
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ok let's save it, and now I want you to right click on that text file we just 
+created and let's take a look at its "properties". 
+
+Ok down here you can see "file size" and what is this? It says 21 <span class="highlight">"bytes"</span>.
+
+So what's a <span class="highlight">byte</span>?
+<img class="image" src="images/02-properties.jpg" width="30%"/>`,
+`I'm pretty sure you've all heard of <span class="highlight">megabytes and gigabytes</span>, right?
+
+Well, you know how we put three lights together to get eight unique combinations? 
+A <span class="highlight">byte</span> is just like that, a group of <span class="highlight">bits</span> (like 
+our lights), but instead of three, there are eight <span class="highlight">bits</span>. 
+
+So a <span class="highlight">byte</span> is a group of eight <span class="highlight">bits</span>, huh? Well then what's a <span class="highlight">megabyte</span>? 
+
+Ok, we're getting a little bit ahead of ourselves. You know how a <span class="highlight">megabyte</span> is 
+smaller than <span class="highlight">gigabyte</span>? There's actually another a unit smaller than a <span class="highlight">megabyte</span> 
+called a <span class="highlight">"kilobyte"</span>. Some of you may have heard of a <span class="highlight">kilobyte</span>. 
+
+So what's that? Well, you know what a <span class="highlight">byte</span> is. So what's a "kilo"? 
+
+What's a kilogram? That's a thousand grams. So a <span class="highlight">kilobyte</span>? That's a thousands 
+<span class="highlight">bytes</span>! (Technically it's actually 1,024 bytes. But let's not worry about that 
+just yet...)
+`,
+`So a kilo is a thousand. Any guess at what a "mega" is? If you guessed a 
+million, you'd be right! So a <span class="highlight">megabyte</span> is a million <span class="highlight">bytes</span> (Again, it's actually 
+1,024 x 1,024 or 1,048,576 <span class="highlight">bytes</span>)
+
+And just to finish off, I'm sure you can guess that a <span class="highlight">gigabyte</span> is a billion <span class="highlight">bytes</span> 
+(1,048,576 x 1,024 or 1,073,741,824), and a <span class="highlight">terabyte</span>, assuming you are familiar, 
+is a trillion <span class="highlight">bytes</span> (1,073,741,824 x 1,024 or 1,099,511,627,776...wow!).
+
+Blown away yet? Well, now that you know what a <span class="highlight">byte</span> is, just as before, let's 
+find out how many combinations we can make with eight <span class="highlight">bits</span>.
+`,
+`So we got all the way up to 8 combinations with 3 bits. Remember, each time we 
+added a light, we doubled the number of combinations. So let's go for it.
+
+<span class="white">
+    1:   2
+    2:   4
+    3:   8
+    4:  16
+    5:  32
+    6:  64
+    7: 128
+    8: 256
+</span>
+Wow, 256 combinations! That's a lot more than before! So realize this, for every 
+<span class="highlight">byte</span> that we have, we can indicate 1 of 256 different possibilites.
+`,
+`Now pay attention: there's a pattern going on here. I'm representing powers of 2 
+the way they often are represented on the computer. 2 squared would be written as 
+2^2. 2 to the power of 3 would be 2^3.
+<span class="white">
+    1:   2 = 2^1
+    2:   4 = 2^2
+    3:   8 = 2^3
+    4:  16 = 2^4
+    5:  32 = 2^5
+    6:  64 = 2^6
+    7: 128 = 2^7
+    8: 256 = 2^8
+</span>
+Ok, great, so if <span class="white">n</span> is equal to the number of bits then the number of possible 
+combinations is equal to:
+<span class="white">
+    2^n. 
+</span>
+Make sense?
+
+I'll list all the combinations now.
+`,
+` <span class="white">                 8  7  6  5   4  3  2  1 </span>
+<span class="white">Combination   1:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0  0  0  0</span>      Oh crap, I'm gonna need more room!
+<span class="white">Combination   2:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0  0  0</span><span class="white">  1</span>
+<span class="white">Combination   3:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination   4:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0  0</span><span class="white">  1  1</span>
+<span class="white">Combination   5:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
+<span class="white">Combination   6:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination   7:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination   8:</span><span class="gray">  0  0  0  0<span class="white"> - </span>0</span><span class="white">  1  1  1</span>
+<span class="white">Combination   9:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0  0  0</span>
+<span class="white">Combination  10:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>
+<span class="white">Combination  11:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  12:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>
+<span class="white">Combination  13:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  14:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  15:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  16:</span><span class="gray">  0  0  0  0</span><span class="white"><span class="white"> - </span>1  1  1  1</span>
+<span class="white">Combination  17:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0  0  0  0</span>
+<span class="white">Combination  18:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0  0  0</span><span class="white">  1</span>
+<span class="white">Combination  19:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  20:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1  1</span>
+<span class="white">Combination  21:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  22:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  23:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  24:</span><span class="gray">  0  0  0</span><span class="white">  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1  1</span>
+`,
+` <span class="white">                 8  7  6  5   4  3  2  1 </span>                              
+<span class="white">Combination  25:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1</span><span class="gray">  0  0  0</span>
+<span class="white">Combination  26:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>
+<span class="white">Combination  27:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  28:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>
+<span class="white">Combination  29:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  30:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  31:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  32:</span><span class="gray">  0  0  0</span><span class="white">  1<span class="white"> - </span>1  1  1  1</span>
+<span class="white">Combination  33:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0  0  0  0</span>
+<span class="white">Combination  34:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0  0  0</span><span class="white">  1</span>
+<span class="white">Combination  35:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  36:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0  0</span><span class="white">  1  1</span>
+<span class="white">Combination  37:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  38:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  39:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  40:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0<span class="white"> - </span>0</span><span class="white">  1  1  1</span>
+<span class="white">Combination  41:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0  0  0</span>
+<span class="white">Combination  42:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>
+<span class="white">Combination  43:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  44:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>
+<span class="white">Combination  45:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  46:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  47:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  48:</span><span class="gray">  0  0</span><span class="white">  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1  1</span>
+
+<img class="image-top-right" src="images/02-car-salesman.jpg" width="30%"/>`,
+` <span class="white">                 8  7  6  5   4  3  2  1 </span>
+<span class="white">Combination  49:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0  0  0  0</span>     Aw, to heck with it. Let's just 
+<span class="white">Combination  50:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0  0  0</span><span class="white">  1</span>     jump to the end!
+<span class="white">Combination  51:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  52:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1  1</span>
+<span class="white">Combination  53:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  54:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  55:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  56:</span><span class="gray">  0  0</span><span class="white">  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1  1</span>
+<span class="white">Combination  57:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1</span><span class="gray">  0  0  0</span>
+<span class="white">Combination  58:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>
+<span class="white">Combination  59:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  60:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>
+<span class="white">Combination  61:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  62:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  63:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  64:</span><span class="gray">  0  0</span><span class="white">  1  1<span class="white"> - </span>1  1  1  1</span>
+<span class="white">Combination  65:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0  0  0  0</span>
+<span class="white">Combination  66:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0  0  0</span><span class="white">  1</span>
+<span class="white">Combination  67:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination  68:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0  0</span><span class="white">  1  1</span>
+<span class="white">Combination  69:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
+<span class="white">Combination  70:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination  71:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination  72:</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0  0<span class="white"> - </span>0</span><span class="white">  1  1  1</span>
+`,
+` <span class="white">                 8  7  6  5   4  3  2  1 </span>                                    
+                           . . .                                                   
+
+<span class="white">Combination 235:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>     Holy crap that's a lot of 
+<span class="white">Combination 236:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>     combinations!
+<span class="white">Combination 237:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
+<span class="white">Combination 238:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination 239:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
+<span class="white">Combination 240:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1  1</span>
+<span class="white">Combination 241:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0  0  0</span>
+<span class="white">Combination 242:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0  0</span><span class="white">  1</span>
+<span class="white">Combination 243:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination 244:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1  1</span>
+<span class="white">Combination 245:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
+<span class="white">Combination 246:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination 247:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination 248:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1  1</span>
+<span class="white">Combination 249:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0  0  0</span>
+<span class="white">Combination 250:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>
+<span class="white">Combination 251:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination 252:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>
+<span class="white">Combination 253:  1  1  1  1<span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
+<span class="white">Combination 254:  1  1  1  1<span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
+<span class="white">Combination 255:  1  1  1  1<span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
+<span class="white">Combination 256:  1  1  1  1<span class="white"> - </span>1  1  1  1</span>
+`,
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ok, so back to our text file...I've counted up the number of characters and...
+huh, I have 21 characters!
+
+21 characters, 21 bytes...
+<img class="image" src="images/02-character-count.jpg" width="70%"/>`,
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ok, so back to our text file...I've counted up the number of characters and...
+huh, I have 21 characters!
+
+21 characters, 21 bytes...
+
+<img class="image" src="https://media1.tenor.com/m/Cxvq6k5vpkQAAAAC/coincidence-i-think-not.gif" width="50%"/>`,
+`So for every character that we have, we have one byte.
+
+`,
 ]
 };
 

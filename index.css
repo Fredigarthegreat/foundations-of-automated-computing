@@ -37,6 +37,12 @@ html, body {
   left: .5em;
 }
 
+.image-top-right {
+  position: absolute;
+  top: .5em;
+  right: .5em;
+}
+
 .clickable {
   cursor: pointer;
 }
