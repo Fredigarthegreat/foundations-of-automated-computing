@@ -31,10 +31,24 @@ html, body {
   line-height: 1.15;
 }
 
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
 .image {
   position: absolute;
   top: .5em;
   left: .5em;
+}
+
+.image-placeable {
+  position: absolute;
+  top: attr(top);
+  left: attr(left);
 }
 
 .image-top-right {
@@ -122,7 +136,8 @@ article {
   position: relative;
   top: -1.15em;
   text-align: center;
-  left: 48ch;
+  left: var(--article-left);
+  width: 75ch;
 }
 
 #help-prompt {

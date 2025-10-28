@@ -257,13 +257,13 @@ const Nav = {
   height: 24,
   scrollBuf: 0,
   top: 0,
-  selectedChapter: 2,
-  selectedPage: 34,
+  selectedChapter: 0,
+  selectedPage: 0,
   chapters: [
     { title: "01 Introduction", tHeight: 1, id: 0 },
     { title: "02 What is data\nProcessing?", tHeight: 2, id: 1 },
-    { title: "03 What does \ndata look like?", tHeight: 2, id: 2 },
-    { title: "chapter 4", tHeight: 1 },
+    { title: "03 Zeroes and \nOnes", tHeight: 2, id: 2 },
+    { title: "04 Binary and \nHexidecimal", tHeight: 2, id: 3 },
     { title: "chapter 5", tHeight: 1 },
     { title: "chapter 6", tHeight: 1 },
     { title: "chapter 7", tHeight: 1 },
@@ -632,10 +632,10 @@ Click "Show settings".
 Disable "Hide extensions for known file types".
 
 <img class="image" src="images/02-hide-extensions.jpg" width="50%"/>`,
-`Ok, now you'll see "-.jpg" or "-.png" or something similar at the end of your 
-file at home. If you were unaware, this part of the filename is called the <span class="highlight">FILE 
-EXTENSION</span>. It's meant to give your computer's system an idea of how this file was 
-intended to be processed when it was given to you. `,
+`Ok, now you'll see the "-.jpg" at the end of your file at home. If you were 
+unaware, this part of the filename is called the <span class="highlight">FILE EXTENSION</span>. It's meant to 
+give your computer's system an idea of how this file was intended to be processed 
+when it was given to you. `,
 `
 
 
@@ -707,9 +707,9 @@ change so that the content is easier to read)
 
 
 
-See this part in the middle here? Believe it or not, this is the entirety of your 
-image file. 
-<img class="image" src="images/02-hxd-jpg.jpg" width="70%"/>`,
+See this part in the middle here? Believe it or not, this is where we can see the 
+entirety of your image file. 
+<img class="image" src="images/02-hxd-jpg.jpg" width="75%"/>`,
 `Ok, remember when I said earlier that computers are all just zeroes and ones? 
 It's true. Now I can already hear you: "that doesn't look like zeroes and ones to 
 me!". Well, you're kind of right. What you're looking at here is called 
@@ -737,7 +737,10 @@ If the beacon is off, that means "Hey, you know, we're chilling", but as soon as
 that beacon is lit that means, "Uh oh! Something's going down! We're in 
 trouble!". That proves you can communicate with someone and indicate <span class="highlight">one of two 
 different situations</span> with even just one thing being <span class="highlight">on or off</span>.
-
+<span class="white">
+    Situation 1 <span class="gray">(light off)</span>: "Hey, you know, we're chilling"
+    Situation 2 <span class="gray">(light on)</span> : "Uh oh! Something's going down! We're in trouble!"
+</span>
 Now think about Paul Revere's case. How come he needed two lights? Pippin was 
 able to indicate one of two different situations with one light. If Robert and 
 Paul only had two cases to indicate (one if by land, two if by sea), wouldn't one 
@@ -748,7 +751,11 @@ and you don't see any lanterns. What does that mean? It means we don't know yet!
 So watch and wait. Wait for the signal... so really there were three different 
 situations to communicate. He needed an additional light to differentiate between 
 those situations since there were more than two.
-
+<span class="white">
+    Situation 1 <span class="gray">(No lights)</span>: Wait for the signal...
+    Situation 2 <span class="gray">(1 light)</span>  : The British are coming by land.
+    Situation 3 <span class="gray">(2 lights)</span> : The British are coming by sea.
+</span>
 Quick note: There is a key component to being able to communicate with lights. 
 You need a shared understanding between the person turning the lights on and off 
 and the person who is looking at the lights. Of course, everyone refers to this 
@@ -760,9 +767,9 @@ sense of those lights.`,
 `Now if you know what you're doing, you can actually indicate more than three 
 possible situations with two lights (This may not have worked in Paul Revere's 
 case as he needed to clearly see the positions of the lights even if they were 
-both off). All you need is to map all the different combinations of two lights 
-being on or off to the different situations you're trying to communicate. So how 
-many combinations do we have? Here's an easy way to think about it:
+both off). All you need is to map all the different situations you're trying to 
+communicate to all the different combinations of two lights being on or off to. 
+So how many combinations do we have? Here's an easy way to think about it:
  
 How many combinations with just one light (not technically a combination, I 
 suppose, but bear with me)? Obviously two, one with the light off, and the other 
@@ -771,10 +778,13 @@ with it on.
                    Light 1 
     Combination 1: <span class="gray">○ (off)</span>
     Combination 2: <span class="white">●</span> <span class="gray">(on)</span>
-</span>`,
-`So if you have two lights, you have all the combinations of the first one 
-with the second one off (study these figures carefully. The first light is on 
-the left of the second light):
+</span>
+Like I mentioned before, you could use this setup to indicate one of two 
+different situations without needing anything else.
+`,
+`Now in the case that you have two lights, you have all the combinations of the 
+first one with the second one off (study these figures carefully. The first 
+light is on the left of the second light):
 <span class="white">
                    L2 L1
     Combination 1: <span class="gray">○  ○ (off, off)</span>
@@ -794,7 +804,8 @@ Here they are all together:
     Combination 3: <span class="white">●</span>  <span class="gray">○ (on, off)</span>
     Combination 4: <span class="white">●  ●</span> <span class="gray">(on, on)</span>
 </span>   
-Yep, those are all unique combinations! `,
+Yep, those are all unique combinations! Now you can indicate up to four different 
+situations `,
 `Maybe you would want to communicate a cardinal direction with somebody:
 <span class="white">
            L2 L1 
@@ -834,10 +845,10 @@ group of two lights into data based on that standard.
 `There's also a very interesting thing happening here. Watch this:
 <span class="white">
            Vertical/Horizontal   Negative/Positive
-    North: <span class="gray">○                  ○</span>                            
-    South: <span class="gray">○</span>                  <span class="white">●</span>
-    West:  <span class="white">●</span>                  <span class="gray">○</span>  
-    East:  <span class="white">●                  ●</span>
+    North: <span class="gray">○                     ○</span>                            
+    South: <span class="gray">○</span>                     <span class="white">●</span>
+    West:  <span class="white">●</span>                     <span class="gray">○</span>  
+    East:  <span class="white">●                     ●</span>
 </span>             
 The first light shows whether or not the direction is positive or negative (Like 
 it is in math) and the second light shows whether the direction is vertical or 
@@ -1002,22 +1013,34 @@ So what's a <span class="highlight">byte</span>?
 `I'm pretty sure you've all heard of <span class="highlight">megabytes and gigabytes</span>, right?
 
 Well, you know how we put three lights together to get eight unique combinations? 
-A <span class="highlight">byte</span> is just like that, a group of <span class="highlight">bits</span> (like 
-our lights), but instead of three, there are eight <span class="highlight">bits</span>. 
+The CPU in Your computer (the part that actually does stuff) is able to retrieve 
+data both from its RAM (faster to access, not persistent, more expensive to 
+manufacture) and from its hard drive (slower to access, persistent, less 
+expensive to manufacture). It grabs the data in groups of 8 <span class="highlight">bits</span> (there's some 
+nuance to this that we'll learn about MUCH later). These groups are called 
+<span class="highlight">"bytes"</span>, just like before when we had 3 <span class="highlight">bits</span> together, but with a <span class="highlight">byte</span> it's <span class="highlight">8 
+bits</span> in total.
+<span class="white">
+   bit
+    ▼
+    1  <span class="gray">0</span>  1  1 - <span class="gray">0</span>  1  <span class="gray">0</span>  1
+    └──────────┬──────────┘
+             byte
+</span>
 
 So a <span class="highlight">byte</span> is a group of eight <span class="highlight">bits</span>, huh? Well then what's a <span class="highlight">megabyte</span>? 
 
 Ok, we're getting a little bit ahead of ourselves. You know how a <span class="highlight">megabyte</span> is 
 smaller than <span class="highlight">gigabyte</span>? There's actually another a unit smaller than a <span class="highlight">megabyte</span> 
-called a <span class="highlight">"kilobyte"</span>. Some of you may have heard of a <span class="highlight">kilobyte</span>. 
+called a <span class="highlight">"kilobyte"</span>. Some of you may have heard of it.
+`,
+`So what's a <span class="highlight">kilobyte</span>? Well, you know what a <span class="highlight">byte</span> is. So what's a "kilo"? 
 
-So what's that? Well, you know what a <span class="highlight">byte</span> is. So what's a "kilo"? 
-
-What's a kilogram? That's a thousand grams. So a <span class="highlight">kilobyte</span>? That's a thousands 
+What's a kilogram? That's a thousand grams. So a <span class="highlight">kilobyte</span>? That's a thousand 
 <span class="highlight">bytes</span>! (Technically it's actually 1,024 bytes. But let's not worry about that 
 just yet...)
-`,
-`So a kilo is a thousand. Any guess at what a "mega" is? If you guessed a 
+
+So a kilo is a thousand. Any guess at what a "mega" is? If you guessed a 
 million, you'd be right! So a <span class="highlight">megabyte</span> is a million <span class="highlight">bytes</span> (Again, it's actually 
 1,024 x 1,024 or 1,048,576 <span class="highlight">bytes</span>)
 
@@ -1044,10 +1067,10 @@ added a light, we doubled the number of combinations. So let's go for it.
 Wow, 256 combinations! That's a lot more than before! So realize this, for every 
 <span class="highlight">byte</span> that we have, we can indicate 1 of 256 different possibilites.
 `,
-`Now pay attention: there's a pattern going on here. I'm representing powers of 2 
-the way they often are represented on the computer. 2 squared would be written as 
-2^2. 2 to the power of 3 would be 2^3.
-<span class="white">
+`Now pay attention to this pattern. Here, I'm representing powers of 2 the way 
+they often are represented on the computer. 2 squared would be written as <span class="white">2^2</span>. 
+2 to the power of 3 would be <span class="white">2^3.
+
     1:   2 = 2^1
     2:   4 = 2^2
     3:   8 = 2^3
@@ -1150,21 +1173,21 @@ I'll list all the combinations now.
 
 <span class="white">Combination 235:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>     Holy crap that's a lot of 
 <span class="white">Combination 236:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>     combinations!
-<span class="white">Combination 237:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
-<span class="white">Combination 238:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
-<span class="white">Combination 239:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1</span><span class="gray">  0</span>
-<span class="white">Combination 240:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1  1</span>
-<span class="white">Combination 241:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0  0  0</span>
-<span class="white">Combination 242:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0  0</span><span class="white">  1</span>
-<span class="white">Combination 243:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>
-<span class="white">Combination 244:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1  1</span>
-<span class="white">Combination 245:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>
-<span class="white">Combination 246:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>
-<span class="white">Combination 247:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>
+<span class="white">Combination 237:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0  0</span>    
+<span class="white">Combination 238:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>     You may have noticed that we 
+<span class="white">Combination 239:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1</span><span class="gray">  0</span>     started with all zeroes and ended 
+<span class="white">Combination 240:  1  1  1</span><span class="gray">  0</span><span class="white"><span class="white"> - </span>1  1  1  1</span>     with all ones. That's because I 
+<span class="white">Combination 241:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0  0  0</span>     followed the same pattern we did 
+<span class="white">Combination 242:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0  0</span><span class="white">  1</span>     when going from two lights to 
+<span class="white">Combination 243:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1</span><span class="gray">  0</span>     three lights. I just duplicated 
+<span class="white">Combination 244:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0  0</span><span class="white">  1  1</span>     what we had down below and set 
+<span class="white">Combination 245:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0  0</span>     half of the combinations to have 
+<span class="white">Combination 246:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1</span><span class="gray">  0</span><span class="white">  1</span>     the new light off, and the other 
+<span class="white">Combination 247:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1</span><span class="gray">  0</span>     half to have it on.
 <span class="white">Combination 248:  1  1  1  1</span><span class="gray"><span class="white"> - </span>0</span><span class="white">  1  1  1</span>
-<span class="white">Combination 249:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0  0  0</span>
-<span class="white">Combination 250:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>
-<span class="white">Combination 251:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>
+<span class="white">Combination 249:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0  0  0</span>     Alright, now that we know what a 
+<span class="white">Combination 250:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0  0</span><span class="white">  1</span>     byte is, Let's go back to our text 
+<span class="white">Combination 251:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1</span><span class="gray">  0</span>     file now.
 <span class="white">Combination 252:  1  1  1  1<span class="white"> - </span>1</span><span class="gray">  0</span><span class="white">  1  1</span>
 <span class="white">Combination 253:  1  1  1  1<span class="white"> - </span>1  1</span><span class="gray">  0  0</span>
 <span class="white">Combination 254:  1  1  1  1<span class="white"> - </span>1  1</span><span class="gray">  0</span><span class="white">  1</span>
@@ -1220,8 +1243,71 @@ huh, I have 21 characters!
 21 characters, 21 bytes...
 
 <img class="image" src="https://media1.tenor.com/m/Cxvq6k5vpkQAAAAC/coincidence-i-think-not.gif" width="50%"/>`,
-`So for every character that we have, we have one byte.
+`So for every character that we have, we have one byte. But how does notepad know 
+what symbol to put on the screen? If you guessed that there must be a code, you 
+would be right!
 
+<span class="gray">0</span><span class="white">1</span><span class="gray">00</span><span class="white">-1</span><span class="gray">000</span><span class="white">: H </span>      These are the bytes that make up our file.
+<span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-</span><span class="gray">0</span><span class="white">1</span><span class="gray">0</span><span class="white">1: e </span>      They are stored on your hard-drive at this very moment. If you 
+<span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-11</span><span class="gray">00</span></span><span class="white">: l</span>       looked there with some kind of electro-microscope that would 
+<span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-11</span><span class="gray">00</span><span class="white">: l</span>       allow you to see electrical charges, this is exactly what you 
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-1111: o </span>      would see.
+</span><span class="gray">0000</span><span class="white">-11</span><span class="gray">00</span><span class="white">: ,</span>
+</span><span class="gray">00</span><span class="white">1</span><span class="gray">0</span><span class="white">-</span><span class="gray">0000</span><span class="white">: </span>        Now how did I find out which pattern of bytes goes with which 
+</span><span class="gray">0</span><span class="white">111-</span><span class="gray">000</span><span class="white">0: p</span>       character?
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-1111: o</span>
+</span><span class="gray">0</span><span class="white">111-</span><span class="gray">0</span><span class="white">1</span><span class="gray">00</span><span class="white">: t</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-1</span><span class="gray">00</span><span class="white">1: i</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-1111: o</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-111</span><span class="gray">0</span><span class="white">: n</span>
+</span><span class="gray">00</span><span class="white">1</span><span class="gray">0</span><span class="white">-</span><span class="gray">0000</span><span class="white">:</span> 
+</span><span class="gray">0</span><span class="white">111-</span><span class="gray">00</span><span class="white">11: s</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-</span><span class="gray">0</span><span class="white">1</span><span class="gray">0</span><span class="white">1: e</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-11</span><span class="gray">00</span><span class="white">: l</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-11</span><span class="gray">00</span><span class="white">: l</span>
+</span><span class="gray">0</span><span class="white">11</span><span class="gray">0</span><span class="white">-</span><span class="gray">0</span><span class="white">1</span><span class="gray">0</span><span class="white">1: e</span>
+</span><span class="gray">0</span><span class="white">111-</span><span class="gray">00</span><span class="white">1</span><span class="gray">0</span><span class="white">: r</span>
+</span><span class="gray">00</span><span class="white">1</span><span class="gray">0</span><span class="white">-111</span><span class="gray">0</span><span class="white">: .</span>
+`,
+`Some of you may have heard of <a class="link inline" target="_blank" href="https://en.wikipedia.org/wiki/ASCII">ASCII<a>. That's short for the American Standard Code 
+for Information Interchange. In the early days of the American computer 
+revolution, the big players got together to decide on a way they could all send 
+written English back and forth. Even today, ASCII is the bedrock for storage and 
+transmission of text on computers.
+`,
+`This chart shows each ASCII character in four columns along with a couple of      
+useful codes. You can right click on the chart and select "Open image in new 
+tab" to view it in fullscreen.
+
+             <img src="images/02-ascii.jpg" width="65%"/>
+                     (Courtesy <a class="link inline" target="_blank" href="https://www.sg-electronic-systems.com/wp-content/uploads/2022/02/Ascii-Table-1.jpg">sg-electronic-systems.com</a>)
+`,
+`The first character of our .txt file is capital "H". It's here on our chart in 
+9th row of the 3rd column
+
+<img class="float-left" src="images/02-ascii-h.jpg" width="520px"/> I've put the first byte of our file right next to 
+ it. Look at the combination of zeroes and ones to 
+ the left of the "H" in the column named <span class="highlight">"BINARY"</span>. 
+ It's the same combination of bits! (Obviously, 
+ because that's where I got it in the first place)
+
+
+
+
+
+
+    <span class="gray">0</span><span class="white">1</span><span class="gray">00</span><span class="white">-1</span><span class="gray">000</span><span class="white">: H </span>
+
+ Don't be confused by the dash in the middle. It's 
+ just another way of writing out the bits. Its 
+ usefulness will be revealed soon...
+
+ Now what is this <span class="highlight">"BINARY"</span> business? Let's find out 
+ in the next chapter.
+`,
+],
+3: [
+`yo
 `,
 ]
 };
