@@ -111,12 +111,12 @@ html, body {
 }
 
 #wrapper {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   width:  1920px;
   height: 1080px;
-  transform-origin: center;
+  transform-origin: center center;
 }
 #content {
   position: absolute;
@@ -134,10 +134,24 @@ article {
 
 #page-control {
   position: relative;
-  top: -1.15em;
+  bottom: 1.15em;
   text-align: center;
   left: var(--article-left);
   width: 75ch;
+  white-space: pre;
+}
+
+#page-control button:hover {
+  background: transparent;
+  position: relative;
+}
+
+#page-control button:hover::after{
+  white-space: pre;
+  content: "●";
+  position: relative;
+  left: -1ch;
+  color: var(--main);
 }
 
 #help-prompt {
@@ -192,8 +206,12 @@ article {
   padding: 0;
 }
 
-#nav-bottom-buttons button {
+#nav-bottom-buttons button{
   width: 3ch;
+}
+
+button {
+  width: 1ch;
   height: 1em;
   margin: 0;
   padding: 0;
@@ -201,13 +219,13 @@ article {
   border: none;
   cursor: pointer;
 }
-#nav-bottom-buttons button:hover{
+button:hover{
   background: var(--main);
   color: black;
   border: none;
   cursor: pointer;
 }
-#nav-bottom-buttons button:focus {
+button:focus {
   background: var(--main);
 }
 

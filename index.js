@@ -64,36 +64,30 @@ function getActiveChapterLength (navState, material) {
   }
 }
 
-function navSelectPage (navState, material, pageIndex) {
-  const chapterLength = getActiveChapterLength(navState, material);
-  if (0 <= pageIndex && pageIndex <= chapterLength - 1) {
-    navState.selectedPage = pageIndex;
-    navDrawPageControl(navState, material);
+function navLoadPage (navState, material) {
+  // Purge page-control's children
+  var child;
+  while (child = navState.pageControl.firstChild) {
+    navState.pageControl.removeChild(child);
   }
-}
-
-function articleOveride (navState, material, chapterID, pageIndex) {
-  const article = document.getElementById("article");
-  article.innerHTML = getChapterContent(navState, material, chapterID, pageIndex);
-}
-
-function getChapterContent(navState, material, chapterID, pageIndex) {
-  return material[chapterID][pageIndex];
-
-}
-
-
-function navDrawPageControl (navState, material) {
+  // Update page-control element
   const chapterLength = getActiveChapterLength(navState, material);
-  var pageControlString = "";
+  // add whitespace at beginning so that it doesn't move once we reach 2 digits
+  var prefix = (navState.selectedPage < 9) ? " " : "";
+  console.log(prefix);
+  prefix += navState.selectedPage + 1 + " ";
+  navState.pageControl.innerText = prefix;
   for (var i = 0; i <= chapterLength - 1; i++) {
+    const pageButton = document.createElement("button");
+    pageButton.setAttribute("index", i);
     if (i == navState.selectedPage) {
-      pageControlString += "●";
+      pageButton.innerText = "●";
     } else {
-      pageControlString += "○";
+      pageButton.innerText = "○";
     }
+    navState.pageControl.append(pageButton);
   }
-  navState.pageControl.innerText = pageControlString;
+  // Load new page content
   const article = document.getElementById("article");
   if (chapterLength) {
     article.innerHTML = 
@@ -107,6 +101,25 @@ function navDrawPageControl (navState, material) {
     article.innerHTML = "";
   }
 }
+
+function navSelectPage (navState, material, pageIndex) {
+  const chapterLength = getActiveChapterLength(navState, material);
+  if (0 <= pageIndex && pageIndex <= chapterLength - 1) {
+    navState.selectedPage = pageIndex;
+    navLoadPage(navState, material);
+  }
+}
+
+function articleOveride (navState, material, chapterID, pageIndex) {
+  const article = document.getElementById("article");
+  article.innerHTML = getChapterContent(navState, material, chapterID, pageIndex);
+}
+
+function getChapterContent(navState, material, chapterID, pageIndex) {
+  return material[chapterID][pageIndex];
+
+}
+
 
 function navSelectChapter (navState, material, chapterIndex) {
   if (0 <= chapterIndex && chapterIndex <= navState.chapters.length - 1) {
@@ -133,7 +146,7 @@ function navSelectChapter (navState, material, chapterIndex) {
       }
     });
     navSelectPage(navState, material, 0);
-    navDrawPageControl(navState, material);
+    navLoadPage(navState, material);
   }
 }
 
@@ -183,10 +196,36 @@ function handleChapterInterraction (navState) {
   })
 }
 
+function handlePageNext(navState, material) {
+  if (
+    navState.selectedPage == getActiveChapterLength(navState, material) - 1 
+    && navState.selectedChapter < navState.chapters.length - 1
+  ) {
+    navSelectChapter(navState, material, navState.selectedChapter + 1);
+  } else {
+    navSelectPage(navState, material, navState.selectedPage + 1);
+  }
+}
+
+function handlePagePrev(navState, material) {
+  if (navState.selectedPage == 0 && navState.selectedChapter > 0) {
+    navSelectChapter(navState, material, navState.selectedChapter - 1);
+    navSelectPage(navState, material, getActiveChapterLength(navState, material) - 1);
+  } else {
+    navSelectPage(navState, material, navState.selectedPage - 1);
+  }
+}
+
 function initializeUI (navState, material) {
   navState.list.addEventListener("click", function (e) {
     if (e.target.tagName === "LI") {
       navSelectChapter(navState, material, parseInt(e.target.getAttribute("index")));
+    }
+  })
+  
+  navState.pageControl.addEventListener("click", function (e) {
+    if (e.target.tagName === "BUTTON") {
+      navSelectPage(navState, material, parseInt(e.target.getAttribute("index")));
     }
   })
 
@@ -216,11 +255,11 @@ function initializeUI (navState, material) {
     switch(e.code) {
       case "KeyL":
       case "ArrowRight":
-        navSelectPage(navState, material, navState.selectedPage + 1);
+        handlePageNext(navState, material);
         break;
       case "KeyH":
       case "ArrowLeft":
-        navSelectPage(navState, material, navState.selectedPage - 1);
+        handlePagePrev(navState, material);
         break;
       case "KeyP":
       case "KeyK":
@@ -745,7 +784,7 @@ Now think about Paul Revere's case. How come he needed two lights? Pippin was
 able to indicate one of two different situations with one light. If Robert and 
 Paul only had two cases to indicate (one if by land, two if by sea), wouldn't one 
 light be enough?`,
-`Good question. Alright let's think about it: so you've got one if by land and 
+`Good question. Alright, let's think about it: so you've got one if by land and 
 two if by sea. Now imagine you're Paul Revere looking up at the Old North Church 
 and you don't see any lanterns. What does that mean? It means we don't know yet! 
 So watch and wait. Wait for the signal... so really there were three different 
@@ -766,10 +805,10 @@ for?", but that would be about it. Only the ones who knew the <span class="highl
 sense of those lights.`,
 `Now if you know what you're doing, you can actually indicate more than three 
 possible situations with two lights (This may not have worked in Paul Revere's 
-case as he needed to clearly see the positions of the lights even if they were 
-both off). All you need is to map all the different situations you're trying to 
-communicate to all the different combinations of two lights being on or off to. 
-So how many combinations do we have? Here's an easy way to think about it:
+case as he would have needed to clearly see the positions of the lights even if 
+they were both off). All you need is to map all the different situations you're 
+trying to communicate to all the different combinations of two lights being on or 
+off. So how many combinations do we have? Here's an easy way to think about it:
  
 How many combinations with just one light (not technically a combination, I 
 suppose, but bear with me)? Obviously two, one with the light off, and the other 
@@ -809,10 +848,10 @@ situations `,
 `Maybe you would want to communicate a cardinal direction with somebody:
 <span class="white">
            L2 L1 
-    North: <span class="gray">○  ○</span>                            
-    South: <span class="gray">○</span>  <span class="white">●</span>
-    West:  <span class="white">●</span>  <span class="gray">○</span>  
-    East:  <span class="white">●  ●</span>
+    North: <span class="gray">○  ○ (off, off)</span>
+    South: <span class="gray">○</span>  <span class="white">●</span> <span class="gray">(off, on)</span>
+    West:  <span class="white">●</span>  <span class="gray">○ (on, off)</span>
+    East:  <span class="white">●  ●</span> <span class="gray">(on, on)</span>
 </span>   
 Two lights would be enough for that! We would call a chart like this an <span class="highlight">ENCODING 
 STANDARD</span>. All that means is that we've decided ahead of time all the different 
@@ -1055,30 +1094,32 @@ find out how many combinations we can make with eight <span class="highlight">bi
 added a light, we doubled the number of combinations. So let's go for it.
 
 <span class="white">
-    1:   2
-    2:   4
-    3:   8
-    4:  16
-    5:  32
-    6:  64
-    7: 128
-    8: 256
+  # of bits  total combinations
+         1:    2
+         2:    4
+         3:    8
+         4:   16
+         5:   32
+         6:   64
+         7:  128
+         8:  256
 </span>
 Wow, 256 combinations! That's a lot more than before! So realize this, for every 
 <span class="highlight">byte</span> that we have, we can indicate 1 of 256 different possibilites.
 `,
-`Now pay attention to this pattern. Here, I'm representing powers of 2 the way 
-they often are represented on the computer. 2 squared would be written as <span class="white">2^2</span>. 
+`Notice how these are all powers of 2? Here, I'm representing powers of 2 the way 
+they are often represented on the computer. 2 squared would be written as <span class="white">2^2</span>. 
 2 to the power of 3 would be <span class="white">2^3.
 
-    1:   2 = 2^1
-    2:   4 = 2^2
-    3:   8 = 2^3
-    4:  16 = 2^4
-    5:  32 = 2^5
-    6:  64 = 2^6
-    7: 128 = 2^7
-    8: 256 = 2^8
+  # of bits  total combinations
+         1:    2 = 2^1
+         2:    4 = 2^2
+         3:    8 = 2^3
+         4:   16 = 2^4
+         5:   32 = 2^5
+         6:   64 = 2^6
+         7:  128 = 2^7
+         8:  256 = 2^8
 </span>
 Ok, great, so if <span class="white">n</span> is equal to the number of bits then the number of possible 
 combinations is equal to:
@@ -1307,7 +1348,48 @@ tab" to view it in fullscreen.
 `,
 ],
 3: [
-`yo
+`I want you to imagine you are a computer programmer. Alright, you've got all 
+these empty bytes on the computer ready and waiting for you to shove your data 
+into them. Now let's say you wanted to store a numerical value in one of those 
+bytes. What's a numerical value? ...It's a number. It's just a number.
+
+Now, how might we do that? Well, let's think about what a byte is. It's just a 
+bunch of bits that we can use to indicate one of several possibilities based on 
+a pre-concieved code. If you had the idea to assign a number to each combination 
+of bits, you're on the right track!
+
+Ok, here's our first combination
+
+    <span class="gray">0000<span class="white">-</span>0000</span>
+
+All zeroes. No electrical charge anywhere. Now what number do you think that 
+combination should stand for? Well, I think you can agree that zero would be a 
+pretty logical choice!
+<span class="white">
+    byte      : numerical value
+    <span class="gray">0000<span class="white">-</span>0000</span> : 0
+</span>
+`,
+`Alright, we're off to a great start. The second one is pretty easy too, I would 
+say.
+<span class="white">
+    byte      : numerical value
+    <span class="gray">0000<span class="white">-</span>000</span>1 : 0
+</span>
+Obviously the number 1 would be the most convenient and logical choice.
+<span class="white">
+    byte      : numerical value
+    <span class="gray">0000<span class="white">-</span>0000</span> : 0
+    <span class="gray">0000<span class="white">-</span>000</span>1 : 1
+</span>
+Now what about our third combination? 
+
+    <span class="gray">0000<span class="white">-</span>00<span class="white">1</span>0</span>
+
+Here's where things start to get kind of fishy. It kind of looks like it should 
+be ten, right? But it seems imprudent to jump right from 1 to 10.
+`,
+`Let's try a new approach. Have you ever seen a mechanical odometer?
 `,
 ]
 };
